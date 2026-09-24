@@ -5,7 +5,7 @@ import {defineConfig} from 'vite';
 
 export default defineConfig(() => {
   return {
-    base: base: process.env.GITHUB_PAGES ? '/The-Creative-Forest-Spanish/' : '/',
+    base: '/The-Creative-Forest-Spanish/',
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
