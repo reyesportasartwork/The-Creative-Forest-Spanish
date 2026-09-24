@@ -5,7 +5,7 @@ import {defineConfig} from 'vite';
 
 export default defineConfig(() => {
   return {
-    base: process.env.GITHUB_PAGES ? '/Talleres-creativos-en-la-Naturaleza-y-en-familia-/' : '/',
+    base: base: process.env.GITHUB_PAGES ? '/The-Creative-Forest-Spanish/' : '/',
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
