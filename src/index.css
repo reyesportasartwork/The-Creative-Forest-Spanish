@@ -1,0 +1,165 @@
+@import "tailwindcss";
+
+@theme {
+  --font-gaegu: 'Patrick Hand', 'Mali', 'Gaegu', cursive;
+  --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-mono: 'Geist Mono', monospace;
+
+  --color-bg-canvas: #F8F7F4;
+  --color-ink: #1D1B1B;
+  --color-ink-muted: #444444;
+  --color-ink-subtle: #666666;
+  --color-accent-orange: #E86A33;
+  --color-accent-hover: #D45B25;
+  --color-gold: #FFC947;
+  --color-card-soft: #F0EFEA;
+  --color-card-white: #FFFFFF;
+}
+
+:root {
+  --bg: #F8F7F4;
+  --ink: #1D1B1B;
+  --accent: #E86A33;
+  --gold: #FFC947;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--ink);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Patrick Hand', 'Mali', 'Gaegu', cursive;
+  color: var(--ink);
+  line-height: 1.15;
+}
+
+/* Variation 4 Custom Utility Classes */
+.pill {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--ink);
+  padding: 0.35rem 1.2rem;
+  border-radius: 9999px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+}
+
+.btn-accent {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem 2.2rem;
+  background: var(--accent);
+  color: #FFFFFF;
+  font-family: 'Patrick Hand', 'Mali', 'Gaegu', cursive;
+  font-size: 1.5rem;
+  font-weight: 700;
+  border-radius: 9999px;
+  text-decoration: none;
+  transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+  border: none;
+}
+
+.btn-accent:hover {
+  transform: scale(1.04);
+  background-color: #D45B25;
+  box-shadow: 0 4px 14px rgba(232, 106, 51, 0.25);
+}
+
+.btn-ink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem 2.2rem;
+  background: var(--ink);
+  color: #FFFFFF;
+  font-family: 'Patrick Hand', 'Mali', 'Gaegu', cursive;
+  font-size: 1.5rem;
+  font-weight: 700;
+  border-radius: 9999px;
+  text-decoration: none;
+  transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+  border: none;
+}
+
+.btn-ink:hover {
+  transform: scale(1.04);
+  background-color: #000000;
+  box-shadow: 0 4px 14px rgba(29, 27, 27, 0.25);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.8rem;
+  background: #FFFFFF;
+  color: var(--ink);
+  border: 2px solid #E5E2DC;
+  font-family: 'Patrick Hand', 'Mali', 'Gaegu', cursive;
+  font-size: 1.35rem;
+  font-weight: 700;
+  border-radius: 9999px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  transform: scale(1.03);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.nav-link {
+  font-family: 'Patrick Hand', 'Mali', 'Gaegu', cursive;
+  font-size: 1.4rem;
+  text-decoration: none;
+  color: var(--ink);
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s ease;
+  padding-bottom: 2px;
+}
+
+.nav-link:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.section-title {
+  font-family: 'Patrick Hand', 'Mali', 'Gaegu', cursive;
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: var(--accent);
+  line-height: 1.1;
+}
+
+@media (min-width: 768px) {
+  .section-title {
+    font-size: 3.75rem;
+  }
+}
+
+.text-body {
+  font-size: 1.2rem;
+  color: #444444;
+  line-height: 1.65;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}

@@ -1,0 +1,8 @@
+{
+  "name": "Remix Creative Spanish for Kids · The Creative Forest",
+  "description": "Español para niños a través de historias, arte, naturaleza y creatividad. Proyecto educativo de Reyes Portas para familias homeschool y bilingües.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
