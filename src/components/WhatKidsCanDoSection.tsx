@@ -344,7 +344,7 @@ export const WhatKidsCanDoSection: React.FC<WhatKidsCanDoSectionProps> = ({
                         {work.title[language]}
                       </span>
                       <span className="block font-sans text-[10px] text-[#888] truncate">
-                        {work.technique[language]}
+                        {work.categoryLabel[language]}
                       </span>
                     </button>
                   ))}
@@ -416,27 +416,18 @@ export const WhatKidsCanDoSection: React.FC<WhatKidsCanDoSectionProps> = ({
                       </div>
                     </div>
 
-                    <div className="p-4 flex-1 flex flex-col justify-between">
-                      <div>
-                        <h4 className="font-gaegu text-xl font-bold text-[#1D1B1B] leading-snug mb-1">
+                    <div className="p-3.5 flex-1 flex flex-col justify-between">
+                      <div className="flex items-center justify-between gap-2">
+                        <h4 className="font-gaegu text-xl font-bold text-[#1D1B1B] leading-snug">
                           {work.title[language]}
                         </h4>
-                        <p className="font-sans text-xs text-[#666] leading-relaxed mb-3">
-                          {work.description[language]}
-                        </p>
-                      </div>
-                      
-                      <div className="pt-2.5 border-t border-[#EAE5DA] flex items-center justify-between text-[11px] font-sans text-[#777]">
-                        <span className="flex items-center gap-1 text-[#E86A33] font-semibold">
-                          <Brush className="w-3 h-3" />
-                          <span>{work.technique[language]}</span>
-                        </span>
                         <button
                           type="button"
                           onClick={() => handleOpenLightbox(work)}
-                          className="text-[#2D4030] hover:underline font-bold cursor-pointer"
+                          className="text-xs font-sans text-[#E86A33] hover:underline font-bold cursor-pointer shrink-0 flex items-center gap-1"
                         >
-                          {language === 'es' ? 'Ampliar' : 'Enlarge'}
+                          <Eye className="w-3.5 h-3.5" />
+                          <span>{language === 'es' ? 'Ampliar' : 'Enlarge'}</span>
                         </button>
                       </div>
                     </div>
@@ -536,32 +527,18 @@ export const WhatKidsCanDoSection: React.FC<WhatKidsCanDoSectionProps> = ({
                 </div>
 
                 {/* Datos del Proyecto */}
-                <div className="p-6 bg-white flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-                  <div>
-                    <div className="flex items-center gap-2 mb-1">
-                      <span className="bg-[#E86A33]/10 text-[#E86A33] text-xs font-sans font-bold px-3 py-1 rounded-full">
-                        {selectedWork.categoryLabel[language]}
-                      </span>
-                      <span className="text-xs font-sans text-[#888]">
-                        {language === 'es' ? 'Proyecto' : 'Project'} #{selectedWork.id}
-                      </span>
-                    </div>
+                <div className="p-5 bg-white flex items-center justify-between gap-4">
+                  <div className="flex items-center gap-3">
+                    <span className="bg-[#E86A33]/10 text-[#E86A33] text-xs font-sans font-bold px-3 py-1 rounded-full">
+                      {selectedWork.categoryLabel[language]}
+                    </span>
                     <h3 className="font-gaegu text-2xl sm:text-3xl font-bold text-[#1D1B1B]">
                       {selectedWork.title[language]}
                     </h3>
-                    <p className="font-sans text-xs sm:text-sm text-[#555] mt-1 max-w-xl">
-                      {selectedWork.description[language]}
-                    </p>
                   </div>
-                  
-                  <div className="bg-[#F8F7F4] p-3 rounded-2xl border border-[#EAE5DA] text-right shrink-0">
-                    <span className="block text-[11px] font-sans text-[#888] uppercase tracking-wider">
-                      {language === 'es' ? 'Técnica' : 'Technique'}
-                    </span>
-                    <span className="font-sans text-xs font-bold text-[#2D4030]">
-                      {selectedWork.technique[language]}
-                    </span>
-                  </div>
+                  <span className="text-xs font-sans text-[#888] shrink-0 font-medium">
+                    {language === 'es' ? 'Obra' : 'Artwork'} {selectedWork.id} / {STUDENT_WORKS.length}
+                  </span>
                 </div>
               </motion.div>
             </div>

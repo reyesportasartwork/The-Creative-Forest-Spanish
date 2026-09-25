@@ -43,8 +43,8 @@ export const DynamicHeroBanner: React.FC<DynamicHeroBannerProps> = ({ assets, on
       subtitle: language === 'es' ? 'Obras reales creadas por los niños en directo' : 'Real student art and story projects',
       desc:
         language === 'es'
-          ? 'Acuarelas marinas, los cuatro elementos, girasoles botánicos, máscaras, cómic y maquetas: cada obra nace de la creatividad en vivo de los niños en directo usando el español con naturalidad y orgullo.'
-          : 'Seascapes, the four natural elements, botanical sunflowers, superhero masks, comics, and papercraft: each piece crafted live by students expressing themselves naturally in Spanish.',
+          ? 'Mural y galería de creaciones del taller: cada obra nace de la creatividad en vivo de los niños usando el español con naturalidad y alegría.'
+          : 'Studio creations wall and gallery: each piece born from children’s live creativity as they express themselves naturally in Spanish.',
       badgeHighlight: language === 'es' ? '37 Obras y Momentos Reales' : '37 Real Student Works',
     },
     {
