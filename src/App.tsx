@@ -5,6 +5,7 @@ import reyesFelpaPhoto from './assets/images/Captura%20de%20pantalla%202026-09-2
 import felpaPhoto from './assets/images/felpa_foto.png';
 import creationsBanner from './assets/images/creaciones_banner.png';
 import almaDelTallerPhoto from './assets/images/alma_del_taller.png';
+import { getAssetUrl } from './utils/assets';
 import { LanguageProvider } from './context/LanguageContext';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
@@ -21,14 +22,14 @@ import { FinalCtaSection } from './components/FinalCtaSection';
 import { ContactModal } from './components/ContactModal';
 import { Footer } from './components/Footer';
 
-// Rutas de imágenes alojadas en la carpeta /public extraídas de los archivos subidos
+// Rutas de imágenes alojadas en la carpeta /public y /src/assets/images
 export const PUBLIC_ASSETS = {
- logo,
-  reyesPhoto,
-  reyesFelpaPhoto,
-  felpaPhoto,
-  creationsBanner,
-  almaDelTallerPhoto,
+  logo: logo || getAssetUrl('creative_forest_logo.jpeg'),
+  reyesPhoto: almaDelTallerPhoto || reyesPhoto || getAssetUrl('alma_del_taller.png'),
+  reyesFelpaPhoto: almaDelTallerPhoto || getAssetUrl('alma_del_taller.png'),
+  felpaPhoto: felpaPhoto || getAssetUrl('felpa_foto.png'),
+  creationsBanner: creationsBanner || getAssetUrl('student_creations_banner.png'),
+  almaDelTallerPhoto: almaDelTallerPhoto || getAssetUrl('alma_del_taller.png'),
 };
 
 export default function App() {
@@ -52,7 +53,7 @@ export default function App() {
         {/* Main Content Area */}
         <main id="main-content" className="flex-1">
           
-          {/* Section 1: Hero con Banner Dinámico no estático con Logo, Reyes, Felpa y Creaciones */}
+          {/* Section 1: Hero con Banner Dinámico no estático con Reyes, Felpa, Creaciones y Logo */}
           <Hero onOpenContact={handleOpenContact} assets={PUBLIC_ASSETS} />
 
           {/* Section 2: El Problema (Addressing parents warmly) */}
@@ -75,7 +76,7 @@ export default function App() {
 
           {/* Section 8: Sobre Reyes y su compañero Felpa */}
           <AboutReyesSection
-            reyesPhoto={PUBLIC_ASSETS.reyesFelpaPhoto}
+            reyesPhoto={PUBLIC_ASSETS.almaDelTallerPhoto}
             felpaPhoto={PUBLIC_ASSETS.felpaPhoto}
           />
 

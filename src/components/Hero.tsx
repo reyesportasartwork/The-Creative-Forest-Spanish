@@ -5,6 +5,7 @@ import { InteractiveSketchArea } from './InteractiveSketchArea';
 import { useLanguage } from '../context/LanguageContext';
 import { TRANSLATIONS } from '../data/translations';
 import { DynamicHeroBanner, DynamicBannerAssets } from './DynamicHeroBanner';
+import { getAssetUrl } from '../utils/assets';
 
 export interface HeroProps {
   onOpenContact: () => void;
@@ -18,11 +19,11 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact, assets }) => {
   const [showSketchpad, setShowSketchpad] = useState(false);
 
   const defaultAssets: DynamicBannerAssets = {
-    logo: '/the_creative_forest_logo.jpeg',
-    reyesPhoto: '/Sin título-1.png',
-    felpaPhoto: '/Captura de pantalla 2024-08-09 170647.png',
-    creationsBanner: '/student_creations_collage.png',
-    almaDelTallerPhoto: '/ChatGPT Image Sep 24, 2026, 11_31_56 AM.png',
+    logo: getAssetUrl('creative_forest_logo.jpeg'),
+    reyesPhoto: getAssetUrl('alma_del_taller.png'),
+    felpaPhoto: getAssetUrl('felpa_foto.png'),
+    creationsBanner: getAssetUrl('student_creations_banner.png'),
+    almaDelTallerPhoto: getAssetUrl('alma_del_taller.png'),
   };
 
   const resolvedAssets = assets || defaultAssets;

@@ -3,7 +3,7 @@ import { REYES_BIO, BRAND_INFO } from '../data/content';
 import { CheckCircle2, Heart, Sparkles, Mail, Instagram, Youtube } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { TRANSLATIONS } from '../data/translations';
-import reyesPhoto from '../assets/images/reyes_photo.jpg';
+import { getAssetUrl } from '../utils/assets';
 
 interface AboutReyesSectionProps {
   reyesPhoto?: string;
@@ -11,8 +11,8 @@ interface AboutReyesSectionProps {
 }
 
 export const AboutReyesSection: React.FC<AboutReyesSectionProps> = ({
-  reyesPhoto = '/Captura de pantalla 2026-09-22 195717.png',
-  felpaPhoto = '/Captura de pantalla 2024-08-09 170647.png',
+  reyesPhoto = '/alma_del_taller.png',
+  felpaPhoto = '/felpa_foto.png',
 }) => {
   const { language } = useLanguage();
   const t = TRANSLATIONS.aboutReyes;
@@ -37,16 +37,16 @@ export const AboutReyesSection: React.FC<AboutReyesSectionProps> = ({
           <div className="lg:col-span-5 flex flex-col items-center gap-5">
             <div className="w-full max-w-sm bg-[#F8F7F4] border border-[#E5E2DC] rounded-[40px] p-6 sm:p-8 shadow-xs flex flex-col items-center text-center">
               
-              {/* Photo of Reyes and Felpa with Warm Border & Subtle Floating Tag */}
+              {/* Photo of Reyes with Warm Border & Floating Tag */}
               <div className="relative w-full aspect-square max-w-[280px] rounded-[32px] overflow-hidden border-2 border-[#E5E2DC] shadow-sm mb-5 bg-[#FAF8F5] flex items-center justify-center group">
                 <img
-                  src={encodeURI(reyesPhoto)}
-                  alt="Reyes Portas y Felpa - The Creative Forest"
+                  src={getAssetUrl(reyesPhoto)}
+                  alt="Reyes Portas - The Creative Forest"
                   referrerPolicy="no-referrer"
                   onError={(e) => {
-                    e.currentTarget.src = '/Captura de pantalla 2026-09-22 195717.png';
+                    e.currentTarget.src = getAssetUrl('alma_del_taller.png');
                   }}
-                  className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                  className="w-full h-full object-cover object-[center_top] group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute bottom-3 left-3 right-3 bg-white/95 backdrop-blur-xs px-3 py-1.5 rounded-full border border-[#E5E2DC] shadow-xs flex items-center justify-center gap-1.5">
                   <Sparkles className="w-3.5 h-3.5 text-[#E86A33]" />
@@ -57,7 +57,7 @@ export const AboutReyesSection: React.FC<AboutReyesSectionProps> = ({
               </div>
 
               <span className="pill text-xs py-1 px-3 mb-2">
-                {language === 'es' ? 'La Profe & Artista' : 'Teacher & Visual Artist'}
+                {language === 'es' ? 'Directora y profe' : 'Director & Teacher'}
               </span>
 
               <h3 className="font-gaegu text-4xl font-bold text-[#1D1B1B] leading-none mb-1">
@@ -65,7 +65,7 @@ export const AboutReyesSection: React.FC<AboutReyesSectionProps> = ({
               </h3>
               
               <p className="font-sans text-xs text-[#E86A33] font-bold uppercase tracking-wider mb-4">
-                {language === 'es' ? 'Artista Visual & Educadora Infantil' : 'Visual Artist & Child Educator'}
+                {language === 'es' ? 'Directora & Profe del Taller' : 'Director & Studio Teacher'}
               </p>
 
               <p className="font-sans text-xs text-[#666] leading-relaxed mb-5 text-center px-1">
@@ -87,25 +87,25 @@ export const AboutReyesSection: React.FC<AboutReyesSectionProps> = ({
             <div className="w-full max-w-sm bg-[#FCFBF7] border border-[#E5E2DC] rounded-[28px] p-4 shadow-2xs flex items-center gap-4">
               <div className="w-16 h-16 rounded-2xl overflow-hidden border border-[#E5E2DC] shrink-0 bg-white p-1">
                 <img
-                  src={encodeURI(felpaPhoto)}
+                  src={getAssetUrl(felpaPhoto)}
                   alt="Felpa - Amigo del taller"
                   onError={(e) => {
-                    e.currentTarget.src = '/felpa_foto.png';
+                    e.currentTarget.src = getAssetUrl('felpa_foto.png');
                   }}
                   className="w-full h-full object-cover rounded-xl"
                 />
               </div>
               <div className="text-left">
                 <div className="flex items-center gap-1.5">
-                  <span className="font-gaegu text-xl font-bold text-[#1D1B1B]">Felpa</span>
+                  <span className="font-gaegu text-xl font-bold text-[#1D1B1B]">Felpa 🐾</span>
                   <span className="text-[10px] bg-[#2D4030]/10 text-[#2D4030] font-bold px-2 py-0.5 rounded-full font-sans">
-                    {language === 'es' ? 'Títere del Taller' : 'Studio Puppet'}
+                    {language === 'es' ? 'Copilota en las clases' : 'Classroom Co-pilot'}
                   </span>
                 </div>
                 <p className="font-sans text-xs text-[#666] leading-tight mt-0.5">
                   {language === 'es'
-                    ? 'El cómplice favorito de los peques para charlar, reír y hablar en español con ternura.'
-                    : 'The children’s favorite companion to chat, laugh, and speak Spanish with warmth.'}
+                    ? 'Nuestra copilota favorita en las clases para charlar, reír y hablar en español con ternura.'
+                    : 'Our favorite classroom co-pilot to chat, laugh, and speak Spanish with warmth.'}
                 </p>
               </div>
             </div>

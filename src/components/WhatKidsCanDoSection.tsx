@@ -23,6 +23,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { useLanguage } from '../context/LanguageContext';
 import { TRANSLATIONS } from '../data/translations';
 import { STUDENT_WORKS, StudentWork } from '../data/studentWorks';
+import { getAssetUrl } from '../utils/assets';
 
 interface WhatKidsCanDoSectionProps {
   creationsBanner?: string;
@@ -40,11 +41,14 @@ export const WhatKidsCanDoSection: React.FC<WhatKidsCanDoSectionProps> = ({
   const [showAllWorks, setShowAllWorks] = useState<boolean>(false);
 
   const categories = [
-    { id: 'all', labelEs: 'Todas las creaciones (14)', labelEn: 'All Creations (14)' },
-    { id: 'pintura', labelEs: 'Acuarela & Pintura', labelEn: 'Watercolor & Painting' },
-    { id: 'naturaleza', labelEs: 'Naturaleza & Botánica', labelEn: 'Nature & Botanicals' },
-    { id: 'manualidades', labelEs: 'Manualidades & Papel', labelEn: 'Crafts & Hands-on' },
-    { id: 'personajes', labelEs: 'Personajes & Historias', labelEn: 'Characters & Stories' },
+    { id: 'all', labelEs: `Todas las obras (${STUDENT_WORKS.length})`, labelEn: `All Creations (${STUDENT_WORKS.length})` },
+    { id: 'en_vivo', labelEs: 'Clases en Vivo 🎥', labelEn: 'Live Classes 🎥' },
+    { id: 'pintura', labelEs: 'Acuarela & Pintura 🎨', labelEn: 'Watercolor & Painting 🎨' },
+    { id: 'naturaleza', labelEs: 'Naturaleza & Botánica 🌿', labelEn: 'Nature & Botanicals 🌿' },
+    { id: 'manualidades', labelEs: 'Manualidades & Volumen ✂️', labelEn: 'Crafts & Hands-on ✂️' },
+    { id: 'personajes', labelEs: 'Personajes & Historias 🦊', labelEn: 'Characters & Stories 🦊' },
+    { id: 'materiales', labelEs: 'Materiales & Repaso 📝', labelEn: 'Study Materials 📝' },
+    { id: 'experiencias', labelEs: 'Familias & Testimonios 💬', labelEn: 'Family Reviews 💬' },
   ];
 
   const filteredWorks = STUDENT_WORKS.filter((work) => {
@@ -55,7 +59,7 @@ export const WhatKidsCanDoSection: React.FC<WhatKidsCanDoSectionProps> = ({
     return work.category === activeCategory;
   });
 
-  const visibleWorks = showAllWorks ? filteredWorks : filteredWorks.slice(0, 6);
+  const visibleWorks = showAllWorks ? filteredWorks : filteredWorks.slice(0, 9);
 
   const handleOpenLightbox = (work: StudentWork) => {
     setSelectedWork(work);
@@ -259,7 +263,7 @@ export const WhatKidsCanDoSection: React.FC<WhatKidsCanDoSectionProps> = ({
                 }`}
               >
                 <LayoutGrid className="w-3.5 h-3.5" />
-                <span>{language === 'es' ? 'Fichas (14)' : 'Cards (14)'}</span>
+                <span>{language === 'es' ? `Catálogo (${STUDENT_WORKS.length})` : `Gallery (${STUDENT_WORKS.length})`}</span>
               </button>
             </div>
           </div>
@@ -275,10 +279,10 @@ export const WhatKidsCanDoSection: React.FC<WhatKidsCanDoSectionProps> = ({
               {/* Collage Principal tipo Moodboard de Estudio */}
               <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden border-2 border-[#E5E2DC] shadow-md group bg-[#FAF7F2]">
                 <img
-                  src="/student_creations_collage.png"
+                  src={getAssetUrl('/student_creations_collage.png')}
                   alt="Collage de todos los trabajos de los alumnos de The Creative Forest"
                   onError={(e) => {
-                    e.currentTarget.src = creationsBanner;
+                    e.currentTarget.src = getAssetUrl(creationsBanner);
                   }}
                   className="w-full h-auto object-cover object-center group-hover:scale-[1.01] transition-transform duration-700"
                 />
@@ -287,7 +291,7 @@ export const WhatKidsCanDoSection: React.FC<WhatKidsCanDoSectionProps> = ({
                 <div className="absolute top-3 left-3 bg-white/95 backdrop-blur-xs px-3.5 py-1.5 rounded-full border border-[#E5E2DC] shadow-xs flex items-center gap-2">
                   <Palette className="w-3.5 h-3.5 text-[#E86A33]" />
                   <span className="font-sans text-xs font-bold text-[#1D1B1B]">
-                    {language === 'es' ? 'Collage de Obras Reales' : 'Real Student Works Collage'}
+                    {language === 'es' ? 'Lo Creado en el Taller · Obras Reales' : 'Real Student Works Collage'}
                   </span>
                 </div>
 
@@ -328,7 +332,7 @@ export const WhatKidsCanDoSection: React.FC<WhatKidsCanDoSectionProps> = ({
                     >
                       <div className="relative aspect-[4/3] rounded-lg overflow-hidden bg-[#ECE8E0] mb-1.5">
                         <img
-                          src={work.image}
+                          src={getAssetUrl(work.image)}
                           alt={work.title[language]}
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                         />
@@ -392,7 +396,7 @@ export const WhatKidsCanDoSection: React.FC<WhatKidsCanDoSectionProps> = ({
                       onClick={() => handleOpenLightbox(work)}
                     >
                       <img
-                        src={work.image}
+                        src={getAssetUrl(work.image)}
                         alt={work.title[language]}
                         loading="lazy"
                         className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
@@ -460,14 +464,14 @@ export const WhatKidsCanDoSection: React.FC<WhatKidsCanDoSectionProps> = ({
             </motion.div>
           )}
 
-          {/* Nota de Privacidad y Cuidado Infantil: Solo Reyes y Trabajos */}
+          {/* Nota de Momentos Reales y Acompañamiento en el Taller */}
           <div className="mt-8 pt-4 border-t border-[#F0ECE1] flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-[#555] font-sans bg-[#FAF7F2] p-4 rounded-2xl border border-[#ECE7DC]">
             <div className="flex items-center gap-2.5 text-center sm:text-left">
               <ShieldCheck className="w-5 h-5 text-[#2D4030] shrink-0" />
               <span>
                 {language === 'es'
-                  ? 'Protagonismo exclusivo en sus obras: En The Creative Forest cuidamos la privacidad infantil sin mostrar rostros de los niños en los encuadres. Solo aparece Reyes guiando las sesiones, con el foco en lo que los niños crean e imaginan.'
-                  : 'Exclusive focus on their creations: In The Creative Forest we honor child privacy by excluding student faces from frames. Only teacher Reyes appears guiding classes, placing full spotlight on student artwork.'}
+                  ? 'Momentos y creaciones reales: Imágenes de sesiones en vivo y obras compartidas con el cariño y consentimiento de las familias. Clases llenas de risas, arte y aprendizaje vivo en español.'
+                  : 'Real moments & creations: Authentic live session captures and student artworks shared with the warmth and consent of families. Joyful classes filled with art and living Spanish.'}
               </span>
             </div>
             <span className="text-[11px] text-[#888] shrink-0 font-medium">
@@ -525,7 +529,7 @@ export const WhatKidsCanDoSection: React.FC<WhatKidsCanDoSectionProps> = ({
                 {/* Imagen en Grande */}
                 <div className="bg-[#FAF7F2] max-h-[65vh] flex items-center justify-center overflow-hidden border-b border-[#E5E2DC]">
                   <img
-                    src={selectedWork.image}
+                    src={getAssetUrl(selectedWork.image)}
                     alt={selectedWork.title[language]}
                     className="max-h-[65vh] w-auto object-contain mx-auto"
                   />
