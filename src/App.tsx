@@ -1,4 +1,10 @@
 import React, { useState } from 'react';
+import logo from './assets/images/creative_forest_logo.jpeg';
+import reyesPhoto from './assets/images/reyes_photo.jpg';
+import reyesFelpaPhoto from './assets/images/Captura%20de%20pantalla%202026-09-22%20195735.png';
+import felpaPhoto from './assets/images/felpa_foto.png';
+import creationsBanner from './assets/images/creaciones_banner.png';
+import almaDelTallerPhoto from './assets/images/alma_del_taller.png';
 import { LanguageProvider } from './context/LanguageContext';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
@@ -17,18 +23,12 @@ import { Footer } from './components/Footer';
 
 // Rutas de imágenes alojadas en la carpeta /public extraídas de los archivos subidos
 export const PUBLIC_ASSETS = {
-  // Logo de la empresa The Creative Forest
-  logo: '/the_creative_forest_logo.jpeg',
-  // Foto personal de Reyes Portas
-  reyesPhoto: '/Sin título-1.png',
-  // Foto de Reyes con Felpa en el taller
-  reyesFelpaPhoto: '/Captura de pantalla 2026-09-22 195717.png',
-  // Foto de Felpa (personaje y compañero del taller)
-  felpaPhoto: '/Captura de pantalla 2024-08-09 170647.png',
-  // Banner panorámico tipo collage con los trabajos reales de los alumnos en el taller
-  creationsBanner: '/student_creations_collage.png',
-  // Foto de El Alma del Taller (Reyes y Felpa) en el banner de inicio
-  almaDelTallerPhoto: '/ChatGPT Image Sep 24, 2026, 11_31_56 AM.png',
+ logo,
+  reyesPhoto,
+  reyesFelpaPhoto,
+  felpaPhoto,
+  creationsBanner,
+  almaDelTallerPhoto,
 };
 
 export default function App() {
