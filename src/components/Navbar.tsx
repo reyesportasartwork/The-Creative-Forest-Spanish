@@ -4,6 +4,7 @@ import { BRAND_INFO } from '../data/content';
 import { useLanguage } from '../context/LanguageContext';
 import { TRANSLATIONS } from '../data/translations';
 import creativeForestLogo from '../assets/images/creative_forest_logo.jpeg';
+import { getAssetUrl } from '../utils/assets';
 
 interface NavbarProps {
   onOpenContact: () => void;
@@ -14,7 +15,7 @@ interface NavbarProps {
 
 export const Navbar: React.FC<NavbarProps> = ({
   onOpenContact,
-  logo = '/WhatsApp Image 2026-04-20 at 14.07.37 (1).jpeg',
+  logo = 'creative_forest_logo.jpeg',
 }) => {
   const { language, setLanguage } = useLanguage();
   const t = TRANSLATIONS.nav;
@@ -58,10 +59,10 @@ export const Navbar: React.FC<NavbarProps> = ({
         >
           <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-white border-2 border-[#E5E2DC] p-1 shadow-[0_2px_12px_rgba(0,0,0,0.08)] group-hover:shadow-[0_4px_16px_rgba(0,0,0,0.14)] overflow-hidden transition-all duration-300 group-hover:scale-105 shrink-0 flex items-center justify-center">
             <img
-              src={encodeURI(logo)}
+              src={getAssetUrl(logo)}
               alt="The Creative Forest Logo"
               onError={(e) => {
-                e.currentTarget.src = creativeForestLogo;
+                e.currentTarget.src = getAssetUrl('creative_forest_logo.jpeg');
               }}
               className="w-full h-full object-contain transition-transform duration-700 ease-in-out group-hover:rotate-[360deg]"
             />

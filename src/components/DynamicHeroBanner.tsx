@@ -37,15 +37,15 @@ export const DynamicHeroBanner: React.FC<DynamicHeroBannerProps> = ({ assets, on
     },
     {
       id: 'creaciones',
-      tabLabel: language === 'es' ? '✦ Trabajos de Alumnos (Lo Creado)' : '✦ Student Works (Creations)',
+      tabLabel: language === 'es' ? '✦ Trabajos de Alumnos (5 Áreas)' : '✦ Student Works (5 Areas)',
       tag: language === 'es' ? 'Lo Creado en el Taller' : 'Created in the Studio',
       title: language === 'es' ? 'Trabajos de Alumnos de The Creative Forest' : 'Student Works in The Creative Forest',
       subtitle: language === 'es' ? 'Obras reales creadas por los niños en directo' : 'Real student art and story projects',
       desc:
         language === 'es'
-          ? 'Mural y galería de creaciones del taller: cada obra nace de la creatividad en vivo de los niños usando el español con naturalidad y alegría.'
-          : 'Studio creations wall and gallery: each piece born from children’s live creativity as they express themselves naturally in Spanish.',
-      badgeHighlight: language === 'es' ? '37 Obras y Momentos Reales' : '37 Real Student Works',
+          ? 'Mural y galería de creaciones del taller divididas en 5 áreas: Escultura (Clay & Bubbles), Pintura & Acuarela, Clase de Estampación, Ciencias y Lengua Española, y Material de Repaso.'
+          : 'Studio creations wall and gallery divided into 5 areas: Sculpture (Clay & Bubbles), Painting & Watercolor, Printmaking Class, Science & Spanish, and Review Worksheets.',
+      badgeHighlight: language === 'es' ? '36 Obras y Proyectos Reales' : '36 Real Student Works',
     },
     {
       id: 'brand-logo',
@@ -299,9 +299,26 @@ export const DynamicHeroBanner: React.FC<DynamicHeroBannerProps> = ({ assets, on
                   <h4 className="font-gaegu text-2xl font-bold text-[#1D1B1B] leading-none mb-1 text-center sm:text-left">
                     {slides[1].title}
                   </h4>
-                  <p className="font-sans text-xs sm:text-sm text-[#555] max-w-xl text-center sm:text-left">
+                  <p className="font-sans text-xs sm:text-sm text-[#555] max-w-xl text-center sm:text-left mb-2">
                     {slides[1].desc}
                   </p>
+                  <div className="flex flex-wrap items-center gap-1.5 justify-center sm:justify-start">
+                    <span className="bg-[#2D4030]/10 text-[#2D4030] text-[11px] font-sans font-bold px-2.5 py-0.5 rounded-full">
+                      🏺 Escultura & Clay
+                    </span>
+                    <span className="bg-[#E86A33]/15 text-[#E86A33] text-[11px] font-sans font-bold px-2.5 py-0.5 rounded-full">
+                      🎨 Pintura & Acuarela
+                    </span>
+                    <span className="bg-[#FFC947]/30 text-[#1D1B1B] text-[11px] font-sans font-bold px-2.5 py-0.5 rounded-full">
+                      🍃 Estampación
+                    </span>
+                    <span className="bg-[#2D4030]/10 text-[#2D4030] text-[11px] font-sans font-bold px-2.5 py-0.5 rounded-full">
+                      🧪 Ciencias y Lengua
+                    </span>
+                    <span className="bg-[#E86A33]/15 text-[#E86A33] text-[11px] font-sans font-bold px-2.5 py-0.5 rounded-full">
+                      📝 Material de Repaso
+                    </span>
+                  </div>
                 </div>
                 {onOpenContact && (
                   <button
@@ -339,7 +356,18 @@ export const DynamicHeroBanner: React.FC<DynamicHeroBannerProps> = ({ assets, on
                       src={getAssetUrl(assets.logo)}
                       alt="The Creative Forest Logo - Art, Nature, Science"
                       onError={(e) => {
-                        e.currentTarget.src = getAssetUrl('creative_forest_logo.jpeg');
+                        const fallbacks = [
+                          getAssetUrl('creative_forest_logo.jpeg'),
+                          getAssetUrl('the_creative_forest_logo.jpeg'),
+                          getAssetUrl('creative_forest_logo.png'),
+                          getAssetUrl('student_works/creative_forest_logo.jpeg'),
+                          getAssetUrl('student_works/WhatsApp Image 2026-04-20 at 14.07.37 (1).jpeg'),
+                        ];
+                        const curIdx = parseInt(e.currentTarget.getAttribute('data-err-idx') || '0', 10);
+                        if (curIdx < fallbacks.length) {
+                          e.currentTarget.setAttribute('data-err-idx', String(curIdx + 1));
+                          e.currentTarget.src = fallbacks[curIdx];
+                        }
                       }}
                       className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
                     />

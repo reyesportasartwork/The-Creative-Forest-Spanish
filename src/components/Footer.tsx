@@ -4,6 +4,7 @@ import { BRAND_INFO } from '../data/content';
 import { useLanguage } from '../context/LanguageContext';
 import { TRANSLATIONS } from '../data/translations';
 import creativeForestLogo from '../assets/images/creative_forest_logo.jpeg';
+import { getAssetUrl } from '../utils/assets';
 
 interface FooterProps {
   onOpenContact: () => void;
@@ -12,7 +13,7 @@ interface FooterProps {
 
 export const Footer: React.FC<FooterProps> = ({
   onOpenContact,
-  logo = '/the_creative_forest_logo.jpeg',
+  logo = 'creative_forest_logo.jpeg',
 }) => {
   const { language } = useLanguage();
   const t = TRANSLATIONS.footer;
@@ -170,10 +171,10 @@ export const Footer: React.FC<FooterProps> = ({
             <div className="flex items-center gap-3 mb-3">
               <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-white border border-[#E5E2DC] p-1 shadow-[0_2px_10px_rgba(0,0,0,0.08)] overflow-hidden shrink-0 flex items-center justify-center">
                 <img
-                  src={encodeURI(logo)}
+                  src={getAssetUrl(logo)}
                   alt="The Creative Forest Logo"
                   onError={(e) => {
-                    e.currentTarget.src = creativeForestLogo;
+                    e.currentTarget.src = getAssetUrl('creative_forest_logo.jpeg');
                   }}
                   className="w-full h-full object-contain"
                 />
